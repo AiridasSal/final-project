@@ -2,7 +2,7 @@
 
 Project consists of nodeJS server and react client. 
 
-Backend ncludes:
+Backend includes:
 
 - User registration and login
 - Questions and answers
