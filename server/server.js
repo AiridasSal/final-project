@@ -1,21 +1,19 @@
-// Load environment variables from .env file
 require('dotenv').config()
 
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
-
-const cors = require('cors')
-const prompt = require('prompt')
-const app = express()
 const morgan = require('morgan')
+const cors = require('cors')
+const app = express()
+
 
 // Middleware
 app.use(bodyParser.json())
-prompt.start()
 app.use(cors())
 app.use(morgan('dev'))
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -46,7 +44,6 @@ function logRoutes(app) {
 }
 logRoutes(app);
 
-// Start the server
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server listening on port', process.env.PORT || 3000)
 })
