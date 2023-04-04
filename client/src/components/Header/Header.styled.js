@@ -13,7 +13,7 @@ export const HeaderWrapper = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
 `;
 export const WidthWrapper = styled.div`
   display: flex;

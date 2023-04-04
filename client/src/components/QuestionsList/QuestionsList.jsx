@@ -201,11 +201,6 @@ const QuestionsList = ({ url }) => {
           </QuestionListItem>
         ))}
       </QuestionList>
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
     </QuestionsListWrapper>
   );
 };

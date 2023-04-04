@@ -24,18 +24,38 @@ const PageButton = styled.button`
   }
 `;
 
+const PageButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 var(--spacing-md);
+`;
+
 const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
   return (
     <PageBar>
-      {Array.from({ length: totalPages }, (_, index) => (
-        <PageButton
-          key={index}
-          onClick={() => handlePageChange(index + 1)}
-          disabled={index + 1 === currentPage}
-        >
-          {index + 1}
-        </PageButton>
-      ))}
+      <PageButton
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
+        Previous
+      </PageButton>
+      <PageButtonContainer>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <PageButton
+            key={index}
+            onClick={() => handlePageChange(index + 1)}
+            disabled={index + 1 === currentPage}
+          >
+            {index + 1}
+          </PageButton>
+        ))}
+      </PageButtonContainer>
+      <PageButton
+        onClick={() => handlePageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      >
+        Next
+      </PageButton>
     </PageBar>
   );
 };
