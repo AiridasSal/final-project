@@ -1,10 +1,5 @@
 const LogoText = (props) => (
-  <svg
-    width="100%"
-    height="100%"
-    viewBox="0 0 500.01694915254234 82.57086596708837"
-    class="css-1j8o68f"
-  >
+  <svg width="{0}" height="{0}" viewBox="0 0 1000 100" class="css-1j8o68f">
     <defs id="SvgjsDefs1030" />
     <g
       id="SvgjsG1032"

@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  BackButton,
-  SubmitButton,
-  ReactionButton,
-  DeleteButton,
-} from '../Button/Button.Styled';
+import { SubmitButton } from '../Button/Button.Styled';
 import {
   QuestionFormWrapper,
   FormGroup,

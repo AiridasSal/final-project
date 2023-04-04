@@ -13,38 +13,36 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 import Header from '../Header/Header';
 import { MainContentContainer } from '../../MainContentContainer.style';
 
-import HeroSectionComponent from '../Header/HeroSection';
-const PageTitle = () => {
-  const location = useLocation();
-  const path = location.pathname;
+// const PageTitle = () => {
+//   const location = useLocation();
+//   const path = location.pathname;
 
-  let title = 'QUESTIONS';
+//   let title = 'QUESTIONS';
 
-  if (path === '/questions/new') {
-    title = 'NEW QUESTION';
-  } else if (path.startsWith('/questions/')) {
-    title = 'QUESTION DETAILS';
-  } else if (path === '/login') {
-    title = '';
-  } else if (path === '/register') {
-    title = '';
-  }
+//   if (path === '/questions/new') {
+//     title = 'NEW QUESTION';
+//   } else if (path.startsWith('/questions/')) {
+//     title = 'QUESTION DETAILS';
+//   } else if (path === '/login') {
+//     title = '';
+//   } else if (path === '/register') {
+//     title = '';
+//   }
 
-  return <h1>{title}</h1>;
-};
+//   return <h1>{title}</h1>;
+// };
 
 const AppRouter = () => (
   <Router>
     <Header />
-    <HeroSectionComponent />
     <MainContentContainer>
-      <PageTitle />
+      {/* <PageTitle /> */}
       <Routes>
         <Route path="/questions/new" element={<QuestionForm />} />
         <Route path="/questions/:id" element={<QuestionDetails />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home showHeroSectionComponent={true} />} />
       </Routes>
     </MainContentContainer>
   </Router>

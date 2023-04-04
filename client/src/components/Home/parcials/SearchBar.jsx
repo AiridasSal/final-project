@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { SearchBarStyled, Select, Button } from './SearchBar.style';
+import {
+  SearchBarStyled,
+  Select,
+  Button,
+  Wrapper,
+  Container,
+} from './SearchBar.style';
 
 function SearchBar({ onSearch }) {
   const [query, setQuery] = useState('');
@@ -29,26 +35,61 @@ function SearchBar({ onSearch }) {
   }
 
   return (
-    <div>
-      <Select value={category} onChange={handleCategoryChange}>
-        <option value="title">Title</option>
-        <option value="author">Author</option>
-        <option value="body">Body</option>
-      </Select>
-      <SearchBarStyled type="text" value={query} onChange={handleQueryChange} />
-      <Select value={sort} onChange={handleSortChange}>
-        <option value="Latest">Latest</option>
-        <option value="Oldest">Oldest</option>
-        <option value="Most Answers">Most Answers</option>
-        <option value="Least Answers">Least Answers</option>
-      </Select>
-      <Select value={limit} onChange={handleLimitChange}>
-        <option value="10">10 results</option>
-        <option value="20">20 results</option>
-        <option value="50">50 results</option>
-      </Select>
-      <Button onClick={handleSearch}>Search</Button>
-    </div>
+    <Wrapper>
+      <Container>
+        <label htmlFor="category">
+          Filter by:
+          <Select
+            value={category}
+            name="category"
+            id="category"
+            onChange={handleCategoryChange}
+          >
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="body">Body</option>
+          </Select>
+        </label>
+
+        <label htmlFor="sort">
+          Sort by:
+          <Select
+            value={sort}
+            name="sort"
+            id="sort"
+            onChange={handleSortChange}
+          >
+            <option value="Latest">Latest</option>
+            <option value="Oldest">Oldest</option>
+            <option value="Most Answers">Most Answers</option>
+            <option value="Least Answers">Least Answers</option>
+          </Select>
+        </label>
+
+        <label htmlFor="limit">
+          Limit:
+          <Select
+            value={limit}
+            name="limit"
+            id="limit"
+            onChange={handleLimitChange}
+          >
+            <option value="10">10 results</option>
+            <option value="20">20 results</option>
+            <option value="50">50 results</option>
+          </Select>
+        </label>
+      </Container>
+      <Container>
+        <SearchBarStyled
+          type="text"
+          placeholder="Search questions..."
+          value={query}
+          onChange={handleQueryChange}
+        />
+        <Button onClick={handleSearch}>Search</Button>
+      </Container>
+    </Wrapper>
   );
 }
 

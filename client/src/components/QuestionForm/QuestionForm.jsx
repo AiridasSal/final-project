@@ -4,6 +4,8 @@ import fetchData from '../fetchdata';
 import useRedirect from '../useRedirect';
 import { SubmitButton } from '../Button/Button.Styled';
 import QuestionsList from '../QuestionsList/QuestionsList';
+import { useUser } from '../UserContext';
+
 import {
   QuestionFormWrapper,
   FormGroup,
@@ -12,11 +14,13 @@ import {
   TextArea,
 } from './QuestionForm.styled';
 
-const QuestionForm = ({ onSubmit }) => {
+const QuestionForm = ({ onSubmit, }) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const redirectTo = useRedirect();
+  const {user} = useUser();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -28,6 +32,14 @@ const QuestionForm = ({ onSubmit }) => {
       setErrorMessage(error.message);
     }
   };
+
+  if (!user) {
+    return (
+      <QuestionFormWrapper>
+        <h1>Please sign in to ask a question</h1>
+      </QuestionFormWrapper>
+    );
+  }
 
   return (
     <QuestionFormWrapper>
@@ -54,9 +66,12 @@ const QuestionForm = ({ onSubmit }) => {
             required
           />
         </FormGroup>
-        <SubmitButton type="submit">Submit</SubmitButton>
+        <SubmitButton style={{ marginLeft: '1.5rem' }} type="submit">
+          Submit
+        </SubmitButton>
       </form>
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      {/* Render QuestionsList only when the user is logged in */}
       <QuestionsList />
     </QuestionFormWrapper>
   );

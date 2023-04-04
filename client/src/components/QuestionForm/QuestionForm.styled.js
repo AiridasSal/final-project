@@ -3,10 +3,8 @@ import styled from 'styled-components';
 export const QuestionFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 600px;
-  min-width: 80%;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px;
   background-color: var(--gray-light-color);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -14,6 +12,7 @@ export const QuestionFormWrapper = styled.div`
 
 export const FormGroup = styled.div`
   display: flex;
+  padding: var(--spacing-md);
   flex-direction: column;
   margin-bottom: var(--spacing-md);
 `;

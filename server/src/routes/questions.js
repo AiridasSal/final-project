@@ -1,7 +1,7 @@
 const app = require('express').Router()
 const Question = require('../models/Question')
-const Answer = require('../models/Answer')
-const User = require('../models/User')
+const Answer = require('../Models/Answer')
+const User = require('../Models/User')
 const { authenticateToken } = require('../middleware/authenticateToken')
 const { check, validationResult } = require('express-validator')
 
@@ -11,14 +11,14 @@ app.get('/questions', async (req, res) => {
   const sortParam = req.query.sort || 'date'
   const limit = parseInt(req.query.limit) || 10
 
-  // Parse filter and sort options as JSON objects
+
   let filter = {}
   let sort = {}
 
   if (query) {
     filter[category] = {
       $regex: query,
-      $options: 'i', // Case-insensitive search
+      $options: 'i',
     }
   }
 
@@ -78,13 +78,13 @@ app.patch('/:id', authenticateToken, async (req, res) => {
   try {
     const question = await Question.findById(req.params.id)
     if (!question) {
-      return res.status(404).send({ message: 'Question not found' })
+      return res.status(404).json({ message: 'Question not found' })
     }
 
     if (req.user.name.toString() !== question.author.toString()) {
       return res
         .status(403)
-        .send({ message: 'You are not the author of this question' })
+        .json({ message: 'You are not the author of this question' })
     }
 
     const updatedQuestion = await Question.findByIdAndUpdate(
@@ -102,7 +102,7 @@ app.patch('/:id', authenticateToken, async (req, res) => {
     // Send the updated question
     res.send(updatedQuestion)
   } catch (error) {
-    res.status(500).send({ message: 'Error updating the question' })
+    res.status(500).json({ message: 'Error updating the question' })
   }
 })
 
@@ -193,6 +193,9 @@ app.delete('/answers/:id', authenticateToken, async (req, res) => {
   await Answer.findByIdAndDelete(req.params.id)
 
   res.status(204).json({ message: 'Answer deleted' })
+  
 })
-
+app.use((req, res, next) => {
+  res.status(404).json({ message: 'Route not found' });
+});
 module.exports = app

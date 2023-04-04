@@ -5,6 +5,8 @@ import { keyframes } from 'styled-components';
 export const QuestionsListWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width:100%
+  padding: var(--spacing-lg);
   padding: var(--spacing-lg);
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -105,6 +107,7 @@ export const AuthorNameBadge = styled.div`
 `;
 
 export const StyledNavLink = styled(NavLink)`
+  max-width: 500px;
   text-decoration: none;
   color: #007bff;
   &:hover {
@@ -176,6 +179,7 @@ export const QuestionAnswerCount = styled.p`
 
 export const QuestionTitle = styled.h2`
   margin: 0;
+
   margin-bottom: var(--spacing-xs);
   font-size: 20px;
 `;

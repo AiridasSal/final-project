@@ -16,10 +16,6 @@ const AuthorBadgeWrapper = styled.div`
   text-transform: uppercase;
   cursor: pointer;
   transition: opacity 0.3s;
-
-  &:hover .tooltip {
-    opacity: 1;
-  }
 `;
 
 export const AuthorBadgeTooltip = styled.div`
@@ -70,9 +66,6 @@ const AuthorBadge = ({ author }) => {
         }}
       >
         {author || 'Anonymous'}
-        {showTooltip && (
-          <AuthorBadgeTooltip className="tooltip">{author}</AuthorBadgeTooltip>
-        )}
       </span>
     </AuthorBadgeWrapper>
   );

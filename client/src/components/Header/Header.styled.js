@@ -19,7 +19,7 @@ export const WidthWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1248px;
+  max-width: 1200px;
   width: 100%;
 `;
 export const Nav = styled.nav`
