@@ -1,0 +1,69 @@
+/* global.css */
+:root {
+  /* Colors */
+  --primary-color: #112d4e;
+  --secondary-color: #3f72af;
+  --success-color: #5c8cc4;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #081524;
+  --light-color: #f8f9fa;
+  --dark-color: #5c8cc4;
+  --white-color: #f9f7f7;
+  --black-color: #000000;
+  --gray-color: #6c757d;
+  --gray-light-color: #f9f9f9;
+
+  /* Fonts */
+  --primary-font: 'Roboto', sans-serif;
+  --secondary-font: 'Lato', sans-serif;
+  --tertiary-font: 'Nunito', sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --spacing-xxxl: 64px;
+  --header-height: 60px;
+  --footer-height: 60px;
+}
+
+body {
+  font-family: var(--primary-font);
+  line-height: 1.6;
+  color: var(--black-color);
+  background-color: var(--gray-light-color);
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--secondary-font);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+button {
+  font-family: var(--primary-font);
+}
+
+input,
+select {
+  font-family: var(--primary-font);
+}
