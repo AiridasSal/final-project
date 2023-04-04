@@ -112,7 +112,7 @@ const QuestionsList = ({ url }) => {
       sortedQuestions,
       searchQuery
     );
- 
+
     setFilteredQuestions(filteredBySearch);
   }, [questions, filterOption, searchQuery]);
 
@@ -123,11 +123,9 @@ const QuestionsList = ({ url }) => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
-   const handlePageChange = (pageNumber) => {
-      setCurrentPage(pageNumber);
-
-    };
- 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const indexOfLastQuestion = currentPage * questionsPerPage;
   const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
@@ -174,7 +172,11 @@ const QuestionsList = ({ url }) => {
           <option value="leastAnswers">Least Answers</option>
         </StyledSelect>
       </FlexContainer>
-      <Pagination totalPages={totalPages}currentPage={currentPage}handlePageChange={handlePageChange} />
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+      />
       <QuestionList>
         {currentQuestions.map((question) => (
           <QuestionListItem key={question._id}>
@@ -188,7 +190,6 @@ const QuestionsList = ({ url }) => {
               >
                 <QuestionTitle>{question.title}</QuestionTitle>
               </Link>
-              
             </QuestionTitle>
             <AuthorBadge author={question.author}>Author: </AuthorBadge>
             <QuestionCreatedAt>Posted: {question.createdAt}</QuestionCreatedAt>
@@ -200,8 +201,11 @@ const QuestionsList = ({ url }) => {
           </QuestionListItem>
         ))}
       </QuestionList>
-      <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
-
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </QuestionsListWrapper>
   );
 };

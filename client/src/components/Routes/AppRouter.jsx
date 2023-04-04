@@ -38,7 +38,6 @@ const AppRouter = () => (
     <Header />
     <HeroSectionComponent />
     <MainContentContainer>
-     
       <PageTitle />
       <Routes>
         <Route path="/questions/new" element={<QuestionForm />} />

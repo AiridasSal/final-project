@@ -54,8 +54,11 @@ const AuthorBadge = ({ author }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
-    <AuthorBadgeWrapper    onMouseEnter={() => setShowTooltip(true)}
-    onMouseLeave={() => setShowTooltip(false)}  title={author || 'Anonymous'}>
+    <AuthorBadgeWrapper
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+      title={author || 'Anonymous'}
+    >
       {firstName}
       <span
         style={{
@@ -68,10 +71,9 @@ const AuthorBadge = ({ author }) => {
       >
         {author || 'Anonymous'}
         {showTooltip && (
-        <AuthorBadgeTooltip className="tooltip">{author}</AuthorBadgeTooltip>
-      )}
+          <AuthorBadgeTooltip className="tooltip">{author}</AuthorBadgeTooltip>
+        )}
       </span>
-
     </AuthorBadgeWrapper>
   );
 };

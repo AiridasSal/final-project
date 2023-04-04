@@ -6,44 +6,44 @@ const { authenticateToken } = require('../middleware/authenticateToken')
 const { check, validationResult } = require('express-validator')
 
 app.get('/questions', async (req, res) => {
-  const query = req.query.query || '';
-  const category = req.query.category || 'title';
-  const sortParam = req.query.sort || 'date';
-  const limit = parseInt(req.query.limit) || 10;
+  const query = req.query.query || ''
+  const category = req.query.category || 'title'
+  const sortParam = req.query.sort || 'date'
+  const limit = parseInt(req.query.limit) || 10
 
   // Parse filter and sort options as JSON objects
-  let filter = {};
-  let sort = {};
+  let filter = {}
+  let sort = {}
 
   if (query) {
     filter[category] = {
       $regex: query,
       $options: 'i', // Case-insensitive search
-    };
+    }
   }
 
   if (sortParam === 'Latest') {
-    sort.createdAt = -1;
+    sort.createdAt = -1
   }
   if (sortParam === 'Oldest') {
-    sort.createdAt = 1;
+    sort.createdAt = 1
   }
-  if ( sortParam === 'Most Answers') {
-    sort.answerCount = -1;
+  if (sortParam === 'Most Answers') {
+    sort.answerCount = -1
   }
-  if ( sortParam === 'Least Answers') {
-    sort.answerCount = 1;
+  if (sortParam === 'Least Answers') {
+    sort.answerCount = 1
   }
   // Apply filter, sort, and limit options to the query
-  const questions = await Question.find(filter).sort(sort).limit(limit);
+  const questions = await Question.find(filter).sort(sort).limit(limit)
 
-  res.send(questions);
-});
+  res.send(questions)
+})
 app.get('/', async (req, res) => {
-  const filter = req.query.filter || {};
-  const sort = req.query.sort || {};
-  
-  const questions = await Question.find(filter).sort(sort);
+  const filter = req.query.filter || {}
+  const sort = req.query.sort || {}
+
+  const questions = await Question.find(filter).sort(sort)
   res.send(questions)
 })
 app.get('/:id', async (req, res) => {
@@ -191,7 +191,7 @@ app.patch('/answers/:id', authenticateToken, async (req, res) => {
 
 app.delete('/answers/:id', authenticateToken, async (req, res) => {
   await Answer.findByIdAndDelete(req.params.id)
-  
+
   res.status(204).json({ message: 'Answer deleted' })
 })
 

@@ -50,13 +50,11 @@ function Home() {
 
   return (
     <>
-   
-    
-    <div>
-      <SearchBar onSearch={handleSearch} />
+      <div>
+        <SearchBar onSearch={handleSearch} />
 
-      {url && <QuestionsList url={url} setCurrentPage={1} />}
-    </div>
+        {url && <QuestionsList url={url} setCurrentPage={1} />}
+      </div>
     </>
   );
 }

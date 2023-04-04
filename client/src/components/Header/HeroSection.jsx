@@ -38,8 +38,10 @@ const HeroSectionComponent = () => {
   return (
     <HeroSection>
       <div>
-        <HeroTitle>INSIGHTHIVE <br /> 
-        THE COMMUNITY OF CURIUOS MINDS</HeroTitle>
+        <HeroTitle>
+          INSIGHTHIVE <br />
+          THE COMMUNITY OF CURIUOS MINDS
+        </HeroTitle>
         <NavLink to="/questions/new">
           <HeroButton>Get started</HeroButton>
         </NavLink>

@@ -9,8 +9,10 @@ const PageBar = styled.div`
 const PageButton = styled.button`
   font-size: 1rem;
   padding: var(--spacing-xs) var(--spacing-sm);
-  background-color: ${props => props.disabled ? 'var(--secondary-color)' : 'var(--white-color)'};
-  color: ${props => props.disabled ? 'var(--white-color)' : 'var(--primary-color)'};
+  background-color: ${(props) =>
+    props.disabled ? 'var(--secondary-color)' : 'var(--white-color)'};
+  color: ${(props) =>
+    props.disabled ? 'var(--white-color)' : 'var(--primary-color)'};
   border: none;
   border-radius: 4px;
   cursor: pointer;

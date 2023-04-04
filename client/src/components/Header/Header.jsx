@@ -55,10 +55,8 @@ const Header = () => {
                 </>
               )}
             </Container>
-           
           </WidthWrapper>
         </HeaderWrapper>
-        
       )}
     </>
   );
