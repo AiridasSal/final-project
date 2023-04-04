@@ -5,8 +5,45 @@ const User = require('../models/User')
 const { authenticateToken } = require('../middleware/authenticateToken')
 const { check, validationResult } = require('express-validator')
 
+app.get('/questions', async (req, res) => {
+  const query = req.query.query || '';
+  const category = req.query.category || 'title';
+  const sortParam = req.query.sort || 'date';
+  const limit = parseInt(req.query.limit) || 10;
+
+  // Parse filter and sort options as JSON objects
+  let filter = {};
+  let sort = {};
+
+  if (query) {
+    filter[category] = {
+      $regex: query,
+      $options: 'i', // Case-insensitive search
+    };
+  }
+
+  if (sortParam === 'Latest') {
+    sort.createdAt = -1;
+  }
+  if (sortParam === 'Oldest') {
+    sort.createdAt = 1;
+  }
+  if ( sortParam === 'Most Answers') {
+    sort.answerCount = -1;
+  }
+  if ( sortParam === 'Least Answers') {
+    sort.answerCount = 1;
+  }
+  // Apply filter, sort, and limit options to the query
+  const questions = await Question.find(filter).sort(sort).limit(limit);
+
+  res.send(questions);
+});
 app.get('/', async (req, res) => {
-  const questions = await Question.find({})
+  const filter = req.query.filter || {};
+  const sort = req.query.sort || {};
+  
+  const questions = await Question.find(filter).sort(sort);
   res.send(questions)
 })
 app.get('/:id', async (req, res) => {
@@ -154,7 +191,8 @@ app.patch('/answers/:id', authenticateToken, async (req, res) => {
 
 app.delete('/answers/:id', authenticateToken, async (req, res) => {
   await Answer.findByIdAndDelete(req.params.id)
-  res.sendStatus(204)
+  
+  res.status(204).json({ message: 'Answer deleted' })
 })
 
 module.exports = app

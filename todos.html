@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Commenter</title>
+    <style>
+        body {
+            margin: 0 auto;
+            width: 600px;
+            font-family: Arial, sans-serif;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 0.5rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        textarea {
+            display: none;
+            width: 100%;
+            margin-top: 0.5rem;
+            resize: vertical;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Task Commenter</h1>
+    <ul id="taskList">
+        <li class="task">
+            <p>Log in</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 0)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 0)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>Register</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 1)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 1)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>Ask a new question (only when logged in)</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 2)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 2)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>Edit a question (UI should show that the question was edited) (only when logged in)</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 3)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 3)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>Delete a question (only when logged in)</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 4)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 4)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>Answer a question (only when logged in)</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 5)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 5)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>Edit an answer (UI should show that the answer was edited) (only when logged in)</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 6)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 6)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>Delete an answer (only when logged in)</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 7)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 7)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>Like/Dislike answers (only when logged in)</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 8)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 8)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>View list of questions sorted by date and/or number of answers (ascending or descending)</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 9)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 9)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>Filter answered or unanswered questions</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 10)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 10)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+        <li class="task">
+            <p>View question answers</p>
+            <input type="checkbox">Completed? </input> <br>
+            <button onclick="addComment(this, 11)">Add comment</button>
+            <button class="edit-comment" onclick="addComment(this, 11)" style="display: none;">Edit comment</button>
+            <textarea></textarea>
+            <p class="comment-display"></p>
+        </li>
+
+    </ul>
+    <script>
+        function getComment(taskId) {
+            return localStorage.getItem(`taskComment-${taskId}`);
+        }
+
+        function setComment(taskId, comment) {
+            localStorage.setItem(`taskComment-${taskId}`, comment);
+        }
+
+        function getCompleted(taskId) {
+            return localStorage.getItem(`taskCompleted-${taskId}`) === 'true';
+        }
+
+        function setCompleted(taskId, completed) {
+            localStorage.setItem(`taskCompleted-${taskId}`, completed);
+        }
+
+        function addComment(button, taskId) {
+            const taskItem = button.parentNode;
+            const textarea = taskItem.querySelector('textarea');
+            const commentDisplay = taskItem.querySelector('.comment-display');
+            const addCommentButton = taskItem.querySelector('.add-comment');
+            const editCommentButton = taskItem.querySelector('.edit-comment');
+
+            textarea.style.display = textarea.style.display === 'none' ? 'block' : 'none';
+
+            addCommentButton.onclick = () => {
+                if (textarea.value.trim() !== '') {
+                    addCommentButton.style.display = 'none';
+                    editCommentButton.style.display = 'block';
+                    textarea.style.display = 'none';
+                    setComment(taskId, textarea.value.trim());
+                    commentDisplay.innerText = textarea.value.trim();
+                    commentDisplay.style.display = 'block';
+                }
+            };
+
+            editCommentButton.onclick = () => {
+                addCommentButton.style.display = 'block';
+                editCommentButton.style.display = 'none';
+                textarea.style.display = 'block';
+                textarea.value = getComment(taskId);
+                commentDisplay.style.display = 'none';
+            };
+        }
+
+        function initComments() {
+            const taskItems = document.querySelectorAll('#taskList li');
+            taskItems.forEach((taskItem, index) => {
+                const button = taskItem.querySelector('.add-comment');
+                const textarea = taskItem.querySelector('textarea');
+                const commentDisplay = taskItem.querySelector('.comment-display');
+                const addCommentButton = taskItem.querySelector('.add-comment');
+                const editCommentButton = taskItem.querySelector('.edit-comment');
+                const storedComment = getComment(index);
+
+                if (storedComment) {
+                    textarea.value = storedComment;
+                    addCommentButton.style.display = 'none';
+                    editCommentButton.style.display = 'block';
+                    commentDisplay.innerText = storedComment;
+                    commentDisplay.style.display = 'block';
+                }
+
+                const checkbox = taskItem.querySelector('input[type="checkbox"]');
+                const storedCompleted = getCompleted(index);
+                checkbox.checked = storedCompleted;
+
+                checkbox.onchange = () => setCompleted(index, checkbox.checked);
+
+                button.onclick = () => addComment(button, index);
+            });
+        }
+
+        initComments();
+
+
+    </script>
+</body>
+
+</html>
