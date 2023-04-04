@@ -16,7 +16,7 @@ const fetchData = async (route, body, method = 'POST', headers) => {
     }
 
     // Check if the response has content before parsing it as JSON
-    if (response.status !== 204) {
+    if (response.status !== 204 || response.status !== 500) {
       const data = await response.json();
       return data;
     }

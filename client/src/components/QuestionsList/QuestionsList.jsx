@@ -13,7 +13,7 @@ import {
   DeleteButton,
   Button,
 } from '../Button/Button.Styled';
-
+const {user} = useUser();
 import {
   QuestionsListWrapper,
   QuestionList,
@@ -41,7 +41,7 @@ const QuestionsList = ({ url }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const questionsPerPage = 10;
-
+ const {user} = useUser();
   const handleSubmitEdit = async (updatedQuestion) => {
     try {
       const response = await fetchData(
@@ -196,7 +196,7 @@ const QuestionsList = ({ url }) => {
             <QuestionAnswerCount>
               Answers: {question.answerCount}
             </QuestionAnswerCount>
-
+                
             <Button onClick={() => handleEditClick(question)}>Edit</Button>
           </QuestionListItem>
         ))}

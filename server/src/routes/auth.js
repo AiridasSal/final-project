@@ -3,7 +3,7 @@ const router = express.Router()
 const { check, validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const User = require('../models/User')
+const User = require('../Models/User')
 const dotenv = require('dotenv')
 
 dotenv.config()
@@ -89,5 +89,7 @@ router.post(
     }
   }
 )
-
+router.use((req, res, next) => {
+  res.status(404).json({ message: 'Route not found' });
+});
 module.exports = router
