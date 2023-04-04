@@ -67,3 +67,16 @@ input,
 select {
   font-family: var(--primary-font);
 }
+
+body {
+  /* background: radial-gradient(circle at center, var(--primary-color) 0%, var(--secondary-color) 50%, var(--tertiary-color) 100%); */
+  background: linear-gradient(
+    to bottom right,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--success-color)
+  );
+  /* background: repeating-linear-gradient(-45deg, var(--primary-color) 0, var(--primary-color) 10px, var(--secondary-color) 10px, var(--secondary-color) 20px); */
+  /* background: repeating-linear-gradient(-45deg, var(--primary-color), var(--primary-color) 20px, var(--secondary-color) 20px, var(--secondary-color) 40px, var(--success-color) 40px, var(--success-color) 60px); */
+  /* background: repeating-linear-gradient(135deg, var(--primary-color) 0, var(--primary-color) 10px, var(--secondary-color) 10px, var(--secondary-color) 30px, var(--success-color) 30px, var(--success-color) 50px); */
+}

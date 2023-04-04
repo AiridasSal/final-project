@@ -54,7 +54,9 @@ const QuestionForm = ({ onSubmit }) => {
             required
           />
         </FormGroup>
-        <SubmitButton type="submit">Submit</SubmitButton>
+        <SubmitButton style={{ marginLeft: '1.5rem' }} type="submit">
+          Submit
+        </SubmitButton>
       </form>
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       <QuestionsList />

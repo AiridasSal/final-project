@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const QuestionDetailsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+
   padding: 20px;
   background-color: var(--gray-light-color);
   border-radius: 10px;
@@ -28,6 +28,8 @@ export const BackButton = styled.button`
 `;
 
 export const QuestionTitle = styled.h2`
+  display: flex;
+  max-width: 100%;
   font-size: 24px;
   font-weight: 500;
   margin-bottom: var(--spacing-md);

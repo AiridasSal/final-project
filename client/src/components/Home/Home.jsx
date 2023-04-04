@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import SearchBar from './parcials/SearchBar';
 import QuestionsList from '../QuestionsList/QuestionsList';
 import HeroSectionComponent from '../Header/HeroSection';
-function Home() {
+function Home({ showHeroSectionComponent }) {
   const [url, setUrl] = useState('');
 
   const handleSearch = async (query, category, sort, limit) => {
@@ -50,6 +50,7 @@ function Home() {
 
   return (
     <>
+      {showHeroSectionComponent && <HeroSectionComponent />}
       <div>
         <SearchBar onSearch={handleSearch} />
 
