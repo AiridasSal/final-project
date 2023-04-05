@@ -12,7 +12,7 @@ const fetchData = async (route, body, method = 'POST', headers) => {
     });
 
     if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
+      throw new Error(`Error: ${response.statusText}`);
     }
 
     // Check if the response has content before parsing it as JSON

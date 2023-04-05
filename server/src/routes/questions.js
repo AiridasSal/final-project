@@ -1,7 +1,6 @@
 const app = require('express').Router()
 const Question = require('../models/Question')
 const Answer = require('../Models/Answer')
-const User = require('../Models/User')
 const { authenticateToken } = require('../middleware/authenticateToken')
 const { check, validationResult } = require('express-validator')
 
@@ -10,7 +9,6 @@ app.get('/questions', async (req, res) => {
   const category = req.query.category || 'title'
   const sortParam = req.query.sort || 'date'
   const limit = parseInt(req.query.limit) || 10
-
 
   let filter = {}
   let sort = {}
@@ -117,7 +115,6 @@ app.get('/:id/answers', async (req, res) => {
 })
 app.get('/answers/:id', async (req, res) => {
   const answer = await Answer.findById(req.params.id)
-  console.log(answer)
   res.send(answer)
 })
 app.post('/:id/answers', authenticateToken, async (req, res) => {
@@ -193,9 +190,8 @@ app.delete('/answers/:id', authenticateToken, async (req, res) => {
   await Answer.findByIdAndDelete(req.params.id)
 
   res.status(204).json({ message: 'Answer deleted' })
-  
 })
 app.use((req, res, next) => {
-  res.status(404).json({ message: 'Route not found' });
-});
+  res.status(404).json({ message: 'Route not found' })
+})
 module.exports = app

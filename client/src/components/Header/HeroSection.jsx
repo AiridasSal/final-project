@@ -41,10 +41,14 @@ const HeroContent = styled.div`
 `;
 
 const HeroTitle = styled.h1`
+  width: 100%;
   font-family: 'Roboto', sans-serif;
   font-size: 4rem;
   margin: 5px 0 0 0;
   padding: 0;
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 const HeroSubtitle = styled.h2`
   font-size: 1rem;

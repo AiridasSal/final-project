@@ -16,7 +16,7 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background-color: var(--secondary-color);
-    color: var(--primary-color);
+    color: var(--white-color);
     outline: none;
   }
 
@@ -32,23 +32,41 @@ export const Button = styled.button`
 `;
 
 export const BackButton = styled(Button)`
-  background-color: var(--white-color);
-  color: var(--black-color);
-  border: 1px solid var(--gray-color);
-  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: 16px;
+  font-weight: 500;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  margin-top: auto;
+  align-self: flex-end;
+  margin-right: 10px;
+  &:hover,
+  &:focus {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    outline: none;
+  }
 
-  &:hover {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    background-color: var(--gray-light);
+    color: var(--gray-dark);
+    cursor: not-allowed;
   }
 `;
 
 export const SubmitButton = styled(Button)`
-  background-color: var(--success-color);
-
+  background-color: var(--secondary-color);
+  margin: var(--spacing-md) 0 var(--spacing-md) var(--spacing-md);
   &:hover {
-    background-color: var(--success-color);
-    filter: brightness(90%);
+    background-color: var(--primary-color);
   }
 
   &:disabled {
@@ -83,22 +101,33 @@ export const ReactionButton = styled.button`
   }
 `;
 export const DeleteButton = styled.button`
-  background-color: var(--danger-color);
+  background-color: var(--primary-color);
   color: var(--white-color);
+  font-size: 16px;
+  font-weight: 500;
   padding: var(--spacing-sm) var(--spacing-md);
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: var(--dark-color);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  margin-top: auto;
+  align-self: flex-end;
+  margin-right: 10px;
+  &:hover,
+  &:focus {
+    background-color: var(--danger-color);
+    color: var(--white-color);
+    outline: none;
   }
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    border-color: var(--danger-color);
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    background-color: var(--gray-light);
+    color: var(--gray-dark);
+    cursor: not-allowed;
   }
 `;
 export const PageButton = styled.button`
