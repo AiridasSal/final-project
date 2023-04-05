@@ -22,7 +22,6 @@ const LoginForm = ({ onSubmit }) => {
       const data = await fetchData('/auth/login', { email, password }, 'POST');
       await onSubmit(data);
       login(data.user);
-      console.log(data.user);
       redirectTo('/');
     } catch (error) {
       setErrorMessage(error.message);
@@ -33,7 +32,6 @@ const LoginForm = ({ onSubmit }) => {
     <LoginFormWrapper>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <FormGroup>
           <Label htmlFor="email">Email</Label>
           <Input
@@ -58,6 +56,7 @@ const LoginForm = ({ onSubmit }) => {
         </FormGroup>
         <SubmitButton type="submit">Login</SubmitButton>
       </form>
+      {errorMessage && <errorMessage>{errorMessage}</errorMessage>}
       <p>
         Dont have an account?
         <NavLink to={{ pathname: '/register' }}> Register</NavLink>

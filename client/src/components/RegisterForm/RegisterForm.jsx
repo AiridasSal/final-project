@@ -104,10 +104,7 @@ RegisterForm.propTypes = {
 };
 
 const RegisterPage = () => {
-  const handleRegister = async (data) => {
-    // Handle the registration data here, e.g., save it to the state, make an API call, etc.
-    console.log('Registration data:', data);
-  };
+  const handleRegister = async (data) => {};
 
   return (
     <div>

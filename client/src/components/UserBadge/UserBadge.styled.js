@@ -9,4 +9,7 @@ export const UserBadgeWrapper = styled.div`
   font-size: 14px;
   font-weight: 500;
   color: var(--white-color);
+  @media (max-width: 467px) {
+    display: none;
+  }
 `;

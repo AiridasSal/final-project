@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import fetchData from '../fetchdata';
+import { useUser } from '../UserContext';
 import {
   BackButton,
   SubmitButton,
@@ -19,6 +20,7 @@ import {
   AnswerBody,
   AnswerStats,
   Stat,
+  Container,
 } from './QuestionDetails.styled';
 import { UpdatedBadge } from '../QuestionsList/QuestionsList.styled';
 import { StyledModal } from '../QuestionsList/QuestionsList.styled';
@@ -32,6 +34,7 @@ const QuestionDetails = () => {
   const [answers, setAnswers] = useState([]);
   const [newAnswer, setNewAnswer] = useState('');
   const { id } = useParams();
+  const { user } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,7 +58,6 @@ const QuestionDetails = () => {
           `http://localhost:3000/questions/${id}/answers`
         );
         const data = await response.json();
-        console.log(data);
         setAnswers(data);
       } catch (error) {
         console.error('Error fetching answers:', error);
@@ -92,8 +94,6 @@ const QuestionDetails = () => {
         'PATCH'
       );
       const data = await response;
-      console.log(data);
-
       setAnswers(
         answers.map((answer) => (answer._id === answerId ? data : answer))
       );
@@ -110,8 +110,6 @@ const QuestionDetails = () => {
         'PATCH'
       );
       const data = await response;
-      console.log(data);
-
       setAnswers(
         answers.map((answer) => (answer._id === answerId ? data : answer))
       );
@@ -135,8 +133,6 @@ const QuestionDetails = () => {
         'PATCH'
       );
       const data = await response;
-      console.log(data);
-
       setAnswers(
         answers.map((answer) => (answer._id === answerId ? data : answer))
       );
@@ -158,15 +154,23 @@ const QuestionDetails = () => {
   if (!question) {
     return <p>Loading...</p>;
   }
-
+  if (!user) {
+    return (
+      <QuestionDetailsWrapper>
+        <h1>Please sign in to view answers</h1>
+        <BackButton onClick={() => navigate(-1)}>Back</BackButton>
+      </QuestionDetailsWrapper>
+    );
+  }
   return (
     <QuestionDetailsWrapper>
-      <DeleteButton onClick={() => handlQuestionDelete(id)}>
-        {' '}
-        Delete
-      </DeleteButton>
-      <BackButton onClick={() => navigate(-1)}>Back</BackButton>
-
+      <Container>
+        <BackButton onClick={() => navigate(-1)}>Back</BackButton>
+        <DeleteButton onClick={() => handlQuestionDelete(id)}>
+          {' '}
+          Delete question
+        </DeleteButton>
+      </Container>
       <QuestionTitle>{question.title}</QuestionTitle>
       <p>Author: {question.author}</p>
       <QuestionBody>{question.body}</QuestionBody>
@@ -180,7 +184,7 @@ const QuestionDetails = () => {
             value={newAnswer}
             onChange={(e) => setNewAnswer(e.target.value)}
           />
-          <SubmitButton type="submit">Submit</SubmitButton>
+          <SubmitButton type="submit">Submit answer</SubmitButton>
         </AnswerForm>
         {answers.map((answer) => (
           <AnswerWrapper key={answer._id}>
@@ -212,7 +216,7 @@ const QuestionDetails = () => {
                       onChange={(e) => setEditedAnswerBody(e.target.value)}
                       value={editedAnswerBody}
                     />
-                    <SubmitButton type="submit">Submit</SubmitButton>
+                    <SubmitButton type="submit">Submit answer</SubmitButton>
                   </AnswerForm>
                 </div>
               )}
@@ -231,14 +235,16 @@ const QuestionDetails = () => {
                 Dislike
               </ReactionButton>
             </AnswerStats>
-            <DeleteButton onClick={() => handleAnswerDelete(answer._id)}>
-              {' '}
-              Delete
-            </DeleteButton>
-            <SubmitButton onClick={() => handleAnswerEditClick(answer._id)}>
-              {' '}
-              Edit
-            </SubmitButton>
+            <Container>
+              <DeleteButton onClick={() => handleAnswerDelete(answer._id)}>
+                {' '}
+                Delete answer
+              </DeleteButton>
+              <SubmitButton onClick={() => handleAnswerEditClick(answer._id)}>
+                {' '}
+                Edit answer
+              </SubmitButton>
+            </Container>
           </AnswerWrapper>
         ))}
       </div>

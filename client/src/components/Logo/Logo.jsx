@@ -1,11 +1,5 @@
-const Logo = (props) => (
-  <svg
-    width={80}
-    height={80}
-    viewBox="0 0 100 100"
-    className="css-1j8o68f"
-    {...props}
-  >
+const Logo = () => (
+  <svg width={80} height={80} viewBox="0 0 100 100" className="css-1j8o68f">
     <defs id="SvgjsDefs1098" />
     <g
       id="SvgjsG1099"

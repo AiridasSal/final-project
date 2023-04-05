@@ -76,7 +76,6 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: 'Invalid credentials' }] })
       }
-      console.log('user', user)
       const payload = { user: { id: user.id } }
       const token = jwt.sign(payload, process.env.JWT_SECRET, {
         expiresIn: '1h',
@@ -90,6 +89,6 @@ router.post(
   }
 )
 router.use((req, res, next) => {
-  res.status(404).json({ message: 'Route not found' });
-});
+  res.status(404).json({ message: 'Route not found' })
+})
 module.exports = router

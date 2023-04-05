@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
 export const SearchBarStyled = styled.input`
-  max-width: 200px;
   padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: var(--spacing-lg);
   font-size: 16px;
   border: none;
-  border-radius: 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease-in-out;
 
   &:focus {
     outline: none;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+  @media (max-width: 467px) {
+    width: 100%;
   }
 `;
 export const Select = styled.select`
@@ -47,6 +49,7 @@ export const Dropdown = styled.select`
 export const Button = styled.button`
   padding: var(--spacing-sm) var(--spacing-md);
   font-size: 16px;
+  margin-top: var(--spacing-lg);
   border: none;
   border-radius: 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -81,10 +84,12 @@ export const Wrapper = styled.div`
 
   padding: 1rem;
   background-color: var(--light-color);
-  border-radius: 8px;
 
   label {
     margin-right: 0.5rem;
+    @media (max-width: 467px) {
+      width: 100%;
+    }
   }
 
   @media (min-width: 768px) {
@@ -96,6 +101,7 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: var(--spacing-xs);
   gap: var(--spacing-md);
 `;

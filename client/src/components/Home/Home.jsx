@@ -29,7 +29,6 @@ function Home({ showHeroSectionComponent }) {
       let limit = 10;
 
       if (localStorage.getItem('searchOptions')) {
-        console.log(localStorage.getItem('searchOptions'));
         [query, category, sort, limit] = JSON.parse(
           localStorage.getItem('searchOptions')
         ).split(', ');
@@ -44,9 +43,7 @@ function Home({ showHeroSectionComponent }) {
     fetchLatestAnswers();
   }, []);
 
-  useEffect(() => {
-    console.log(url);
-  }, [url]);
+  useEffect(() => {}, [url]);
 
   return (
     <>

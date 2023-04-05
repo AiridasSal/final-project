@@ -52,15 +52,16 @@ export const FormLabel = styled.label`
 `;
 
 export const FormInput = styled.input`
-  padding: 10px;
-  border: 2px solid var(--gray-color);
-  border-radius: 5px;
+  padding: var(--spacing-sm) var(--spacing-md);
   font-size: 16px;
-  margin-bottom: var(--spacing-md);
-  transition: border-color 0.3s;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+
   &:focus {
-    border-color: var(--primary-color);
     outline: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -123,4 +124,7 @@ export const ReactionButton = styled.button`
     background-color: var(--primary-color);
     color: var(--white-color);
   }
+`;
+export const Container = styled.div`
+  margin: var(--spacing-lg) 0;
 `;

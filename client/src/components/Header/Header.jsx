@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import UserBadge from '../UserBadge/UserBadge';
 import { useUser } from '../UserContext';
 import { useLocation } from 'react-router-dom';

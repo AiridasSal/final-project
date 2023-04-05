@@ -9,7 +9,6 @@ export const QuestionsListWrapper = styled.div`
   padding: var(--spacing-lg);
   padding: var(--spacing-lg);
   background-color: #f9f9f9;
-  border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
@@ -128,7 +127,7 @@ export const StyledModal = styled(Modal)`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  max-width: 500px;
+  max-width: 800px;
   background: #fff;
   padding: 2rem;
   border-radius: 4px;

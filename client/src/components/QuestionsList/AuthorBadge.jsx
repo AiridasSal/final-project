@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import styled from 'styled-components';
 
 const AuthorBadgeWrapper = styled.div`
@@ -47,14 +46,9 @@ export const AuthorBadgeTooltip = styled.div`
 
 const AuthorBadge = ({ author }) => {
   const firstName = author ? author.charAt(0) : 'A';
-  const [showTooltip, setShowTooltip] = useState(false);
 
   return (
-    <AuthorBadgeWrapper
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
-      title={author || 'Anonymous'}
-    >
+    <AuthorBadgeWrapper title={author || 'Anonymous'}>
       {firstName}
       <span
         style={{

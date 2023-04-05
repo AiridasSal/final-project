@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import QuestionForm from '../QuestionForm/QuestionFormEmpty';
 import fetchData from '../fetchdata';
 import Pagination from './PageBar';
+import { useLocation } from 'react-router-dom';
 StyledModal.setAppElement('#root');
 import AuthorBadge from './AuthorBadge';
-import {
-  PageButton,
-  BackButton,
-  SubmitButton,
-  ReactionButton,
-  DeleteButton,
-  Button,
-} from '../Button/Button.Styled';
-const {user} = useUser();
+import { Button } from '../Button/Button.Styled';
+
 import {
   QuestionsListWrapper,
   QuestionList,
@@ -22,14 +15,11 @@ import {
   StyledInput,
   StyledSelect,
   FlexContainer,
-  PageBar,
   StyledModal,
   UpdatedBadge,
   Link,
-  QuestionAuthor,
   QuestionCreatedAt,
   QuestionAnswerCount,
-  AuthorNameBadge,
 } from './QuestionsList.styled';
 
 const QuestionsList = ({ url }) => {
@@ -40,8 +30,10 @@ const QuestionsList = ({ url }) => {
   const [filterOption, setFilterOption] = useState('newest');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const location = useLocation();
+  const { pathname } = location;
   const questionsPerPage = 10;
- const {user} = useUser();
+
   const handleSubmitEdit = async (updatedQuestion) => {
     try {
       const response = await fetchData(
@@ -72,12 +64,10 @@ const QuestionsList = ({ url }) => {
     const fetchQuestions = async () => {
       try {
         const reqURL = (await url) ? url : 'http://localhost:3000/questions';
-        console.log(reqURL);
         const response = await fetch(reqURL);
         const data = await response.json();
         setQuestions(data);
         setCurrentPage(1);
-        console.log(data);
       } catch (error) {
         console.error('Error fetching questions:', error);
       }
@@ -146,9 +136,9 @@ const QuestionsList = ({ url }) => {
         {editingQuestion && (
           <div>
             <FlexContainer>
-              <h2>Editing questiion</h2>
-              <BackButton onClick={handleCancelEdit}>Cancel</BackButton>
+              <h2>Editing question</h2>
             </FlexContainer>
+            <Button onClick={handleCancelEdit}>Cancel</Button>
             <QuestionForm
               title={editingQuestion.title}
               body={editingQuestion.body}
@@ -158,20 +148,22 @@ const QuestionsList = ({ url }) => {
           </div>
         )}
       </StyledModal>
-      <FlexContainer>
-        <StyledInput
-          type="text"
-          placeholder="Search questions..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
-        <StyledSelect value={filterOption} onChange={handleFilterChange}>
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="mostAnswers">Most Answers</option>
-          <option value="leastAnswers">Least Answers</option>
-        </StyledSelect>
-      </FlexContainer>
+      {pathname !== '/' && (
+        <FlexContainer>
+          <StyledInput
+            type="text"
+            placeholder="Search questions..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <StyledSelect value={filterOption} onChange={handleFilterChange}>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="mostAnswers">Most Answers</option>
+            <option value="leastAnswers">Least Answers</option>
+          </StyledSelect>
+        </FlexContainer>
+      )}
       <Pagination
         totalPages={totalPages}
         currentPage={currentPage}
@@ -196,7 +188,7 @@ const QuestionsList = ({ url }) => {
             <QuestionAnswerCount>
               Answers: {question.answerCount}
             </QuestionAnswerCount>
-                
+
             <Button onClick={() => handleEditClick(question)}>Edit</Button>
           </QuestionListItem>
         ))}
@@ -204,9 +196,5 @@ const QuestionsList = ({ url }) => {
     </QuestionsListWrapper>
   );
 };
-
-QuestionsList.propTypes = {};
-
-QuestionsList.defaultProps = {};
 
 export default QuestionsList;

@@ -12,14 +12,15 @@ import {
   Label,
   Input,
   TextArea,
+  Container,
 } from './QuestionForm.styled';
 
-const QuestionForm = ({ onSubmit, }) => {
+const QuestionForm = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const redirectTo = useRedirect();
-  const {user} = useUser();
+  const { user } = useUser();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,7 +44,9 @@ const QuestionForm = ({ onSubmit, }) => {
 
   return (
     <QuestionFormWrapper>
-      <h1>Ask a question</h1>
+      <Container>
+        <h1>Ask a question</h1>
+      </Container>
       <form onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="title">Title</Label>
@@ -71,7 +74,6 @@ const QuestionForm = ({ onSubmit, }) => {
         </SubmitButton>
       </form>
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      {/* Render QuestionsList only when the user is logged in */}
       <QuestionsList />
     </QuestionFormWrapper>
   );
