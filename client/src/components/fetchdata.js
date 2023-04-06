@@ -1,7 +1,7 @@
 const fetchData = async (route, body, method = 'POST', headers) => {
   const token = localStorage.getItem('token');
   try {
-    const response = await fetch(`http://localhost:3000${route}`, {
+    const response = await fetch(`https://820c-84-15-182-173.eu.ngrok.io${route}`, {
       method: method,
       headers: {
         'Content-Type': 'application/json',
