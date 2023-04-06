@@ -55,7 +55,7 @@ const QuestionDetails = () => {
     const fetchAnswers = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/questions/${id}/answers`
+          `https://820c-84-15-182-173.eu.ngrok.io/questions/${id}/answers`
         );
         const data = await response.json();
         setAnswers(data);
