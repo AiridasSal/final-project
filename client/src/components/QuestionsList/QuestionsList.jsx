@@ -63,7 +63,7 @@ const QuestionsList = ({ url }) => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const reqURL = (await url) ? url : 'http://localhost:3000/questions';
+        const reqURL = (await url) ? url : 'https://820c-84-15-182-173.eu.ngrok.io/questions';
         const response = await fetch(reqURL);
         const data = await response.json();
         setQuestions(data);
