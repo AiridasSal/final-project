@@ -7,7 +7,7 @@ function Home({ showHeroSectionComponent }) {
 
   const handleSearch = async (query, category, sort, limit) => {
     const response = await fetch(
-      `http://localhost:3000/questions/questions/?query=${query}&category=${category}&sort=${sort}&limit=${limit}`
+      `https://820c-84-15-182-173.eu.ngrok.io/questions/questions/?query=${query}&category=${category}&sort=${sort}&limit=${limit}`
     );
     localStorage.setItem(
       'searchOptions',
@@ -35,7 +35,7 @@ function Home({ showHeroSectionComponent }) {
       }
 
       const response = await fetch(
-        `http://localhost:3000/questions/questions/?query=${query}&category=${category}&sort=${sort}&limit=${limit}`
+        `https://820c-84-15-182-173.eu.ngrok.io/questions/questions/?query=${query}&category=${category}&sort=${sort}&limit=${limit}`
       );
       setUrl(response.url);
     }
