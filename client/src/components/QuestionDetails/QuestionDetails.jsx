@@ -42,7 +42,7 @@ const QuestionDetails = () => {
   useEffect(() => {
     const fetchQuestion = async () => {
       try {
-        const response = await fetch(`${SERVER_URL}/${id}`);
+         const response = await fetch(`${SERVER_URL}/questions/${id}`);
         const data = await response.json();
         setQuestion(data);
       } catch (error) {
