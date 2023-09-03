@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import fetchData from '../fetchdata';
 import { useUser } from '../UserContext';
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+
 import {
   BackButton,
   SubmitButton,
