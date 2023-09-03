@@ -18,6 +18,7 @@ const AuthorBadgeWrapper = styled.div`
 `;
 
 export const AuthorBadgeTooltip = styled.div`
+  displat:none;
   position: absolute;
   top: 0%;
   left: 50%;
