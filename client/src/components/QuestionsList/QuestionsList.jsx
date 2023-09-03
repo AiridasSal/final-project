@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 StyledModal.setAppElement('#root');
 import AuthorBadge from './AuthorBadge';
 import { Button } from '../Button/Button.Styled';
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 import {
   QuestionsListWrapper,
@@ -63,7 +64,7 @@ const QuestionsList = ({ url }) => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const reqURL = (await url) ? url : 'http://localhost:3000/questions';
+        const reqURL = (await url) ? url : `${SERVER_URL}/questions`;
         const response = await fetch(reqURL);
         const data = await response.json();
         setQuestions(data);
