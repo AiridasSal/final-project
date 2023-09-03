@@ -18,7 +18,7 @@ const AuthorBadgeWrapper = styled.div`
 `;
 
 export const AuthorBadgeTooltip = styled.div`
-  displat:none;
+  display:none;
   position: absolute;
   top: 0%;
   left: 50%;
@@ -54,6 +54,7 @@ const AuthorBadge = ({ author }) => {
       <span
         style={{
           position: 'absolute',
+          display: 'none',
           top: '100%',
           left: '50%',
           transform: 'translateX(-50%)',
