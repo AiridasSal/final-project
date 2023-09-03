@@ -1,5 +1,5 @@
 const app = require('express').Router()
-const Question = require('../models/Question')
+const Question = require('../Models/Question')
 const Answer = require('../Models/Answer')
 const { authenticateToken } = require('../middleware/authenticateToken')
 const { check, validationResult } = require('express-validator')
