@@ -42,7 +42,7 @@ const QuestionDetails = () => {
   useEffect(() => {
     const fetchQuestion = async () => {
       try {
-        const response = await fetch(`https://820c-84-15-182-173.eu.ngrok.io/questions/${id}`);
+        const response = await fetch(`${SERVER_URL}/${id}`);
         const data = await response.json();
         setQuestion(data);
       } catch (error) {
@@ -57,7 +57,7 @@ const QuestionDetails = () => {
     const fetchAnswers = async () => {
       try {
         const response = await fetch(
-          `https://820c-84-15-182-173.eu.ngrok.io/questions/${id}/answers`
+          `${SERVER_URL}/questions/${id}/answers`
         );
         const data = await response.json();
         setAnswers(data);
