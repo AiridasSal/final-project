@@ -64,7 +64,9 @@ const QuestionsList = ({ url }) => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
+
         const reqURL = (await url) ? url : `${SERVER_URL}/questions`;
+
         const response = await fetch(reqURL);
         const data = await response.json();
         setQuestions(data);

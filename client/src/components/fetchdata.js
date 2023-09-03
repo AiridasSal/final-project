@@ -3,7 +3,9 @@ const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 const fetchData = async (route, body, method = 'POST', headers) => {
   const token = localStorage.getItem('token');
   try {
+
     const response = await fetch(`${SERVER_URL}${route}`, {
+
       method: method,
       headers: {
         'Content-Type': 'application/json',

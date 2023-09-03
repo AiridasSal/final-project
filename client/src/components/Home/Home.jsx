@@ -30,6 +30,7 @@ function Home({ showHeroSectionComponent }) {
     const response = await fetch(
      
       `${SERVER_URL}/questions/questions/?query=${query}&category=${category}&sort=${sort}&limit=${limit}`
+
     );
     
     localStorage.setItem(
@@ -58,7 +59,9 @@ function Home({ showHeroSectionComponent }) {
       }
 
       const response = await fetch(
+
         `${SERVER_URL}/questions/questions/?query=${query}&category=${category}&sort=${sort}&limit=${limit}`
+
       );
       setUrl(response.url);
     }
