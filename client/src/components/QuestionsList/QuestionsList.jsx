@@ -187,7 +187,7 @@ const QuestionsList = ({ url }) => {
               </Link>
             </QuestionTitle>
             <AuthorBadge author={question.author}>Author: </AuthorBadge>
-            <QuestionCreatedAt>Posted: {question.createdAt}</QuestionCreatedAt>
+            <QuestionCreatedAt>Posted: {new Date(question.createdAt).toLocaleString()}</QuestionCreatedAt>
             <QuestionAnswerCount>
               Answers: {question.answerCount}
             </QuestionAnswerCount>

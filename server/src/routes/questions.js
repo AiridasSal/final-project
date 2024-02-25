@@ -178,7 +178,7 @@ app.patch('/answers/:id', authenticateToken, async (req, res) => {
       $set: {
         ...req.body,
         updated: true,
-        updatedAt: Date.now(),
+        updatedAt: new Date().toLocaleString()
       },
     },
     { new: true }
