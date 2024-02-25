@@ -7,7 +7,7 @@ export const HeaderWrapper = styled.header`
   background-color: var(--primary-color);
   padding: var(--spacing-md);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: fixed;
+  position: absolute;
   height: var(--header-height);
   magin-top: var(--spacing-xxl);
   top: 0;
