@@ -15,6 +15,27 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  questionCount: {
+    type: Number,
+    default: 0
+  },
+  answerCount: {
+    type: Number,
+    default: 0
+  },
+  answersLiked: {
+    type: Number,
+    default: 0
+
+  },
+  answersDisliked: {
+    type: Number,
+    default: 0
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  }
 })
 
 userSchema.pre('save', async function (next) {

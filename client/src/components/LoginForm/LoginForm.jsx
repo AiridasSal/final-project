@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { LoginFormWrapper } from './LoginForm.styled';
 import { NavLink } from 'react-router-dom';
 import { SubmitButton } from '../Button/Button.Styled';
-import { FormGroup, Label, Input } from '../QuestionForm/QuestionForm.styled';
+import { FormGroup, Label, Input } from './LoginForm.styled';
 import useRedirect from '../useRedirect';
 import fetchData from '../fetchdata';
 import { useUser } from '../UserContext';

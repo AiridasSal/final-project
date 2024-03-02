@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SubmitButton } from '../Button/Button.Styled';
 
-import { FormGroup, Label, Input } from '../QuestionForm/QuestionForm.styled';
+import { FormGroup, Label, Input } from '../LoginForm/LoginForm.styled';
 import { RegisterFormWrapper } from './RegisterForm.styled';
 import useRedirect from '../useRedirect';
 import fetchData from '../fetchdata';

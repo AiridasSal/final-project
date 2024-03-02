@@ -1,7 +1,10 @@
 const app = require('express').Router()
 const Question = require('../Models/Question')
 const Answer = require('../Models/Answer')
+const User = require('../Models/User')
 const { authenticateToken } = require('../middleware/authenticateToken')
+const { updateUserQuestionCount } = require('../middleware/questionCount')
+const { updateUserAnswerCount } = require('../middleware/answerCount')
 const { check, validationResult } = require('express-validator')
 
 app.get('/questions', async (req, res) => {
@@ -56,6 +59,7 @@ app.post(
     check('title').notEmpty().withMessage('Title is required'),
     check('body').notEmpty().withMessage('Body is required'),
   ],
+  updateUserQuestionCount,
   async (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -117,7 +121,9 @@ app.get('/answers/:id', async (req, res) => {
   const answer = await Answer.findById(req.params.id)
   res.send(answer)
 })
-app.post('/:id/answers', authenticateToken, async (req, res) => {
+app.post('/:id/answers', authenticateToken,[
+  check('body').notEmpty().withMessage('Body is required'),
+], updateUserAnswerCount, async (req, res) => {
   const answer = new Answer({
     question: req.params.id,
     body: req.body.body,
@@ -126,8 +132,8 @@ app.post('/:id/answers', authenticateToken, async (req, res) => {
   await answer.save()
   await Question.findByIdAndUpdate(req.params.id, {
     $inc: { answerCount: 1 },
-  })
-  res.send(answer)
+  }),
+    res.send(answer)
 })
 app.patch('/answers/:id/like', authenticateToken, async (req, res) => {
   const answer = await Answer.findById(req.params.id)
