@@ -28,11 +28,9 @@ function Home({ showHeroSectionComponent }) {
   console.log(SERVER_URL);
   const handleSearch = async (query, category, sort, limit) => {
     const response = await fetch(
-     
       `${SERVER_URL}/questions/questions/?query=${query}&category=${category}&sort=${sort}&limit=${limit}`
-
     );
-    
+
     localStorage.setItem(
       'searchOptions',
       JSON.stringify(`${query}, ${category}, ${sort}, ${limit}`)
@@ -59,9 +57,7 @@ function Home({ showHeroSectionComponent }) {
       }
 
       const response = await fetch(
-
         `${SERVER_URL}/questions/questions/?query=${query}&category=${category}&sort=${sort}&limit=${limit}`
-
       );
       setUrl(response.url);
     }

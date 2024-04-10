@@ -12,7 +12,7 @@ export const LoginFormWrapper = styled.div`
 `;
 export const FormGroup = styled.div`
   display: flex;
-  padding: var(--spacing-lg) 0 ;
+  padding: var(--spacing-lg) 0;
   flex-direction: column;
 `;
 

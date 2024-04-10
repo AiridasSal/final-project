@@ -64,7 +64,6 @@ const QuestionsList = ({ url }) => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-
         const reqURL = (await url) ? url : `${SERVER_URL}/questions`;
 
         const response = await fetch(reqURL);
@@ -187,7 +186,9 @@ const QuestionsList = ({ url }) => {
               </Link>
             </QuestionTitle>
             <AuthorBadge author={question.author}>Author: </AuthorBadge>
-            <QuestionCreatedAt>Posted: {new Date(question.createdAt).toLocaleString()}</QuestionCreatedAt>
+            <QuestionCreatedAt>
+              Posted: {new Date(question.createdAt).toLocaleString()}
+            </QuestionCreatedAt>
             <QuestionAnswerCount>
               Answers: {question.answerCount}
             </QuestionAnswerCount>
