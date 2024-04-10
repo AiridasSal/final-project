@@ -5,7 +5,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: center;
   background-color: var(--primary-color);
-  padding: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute;
   height: var(--header-height);
@@ -19,7 +19,6 @@ export const WidthWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
   width: 100%;
 `;
 export const Nav = styled.nav`
@@ -28,10 +27,15 @@ export const Nav = styled.nav`
 
 export const Ulist = styled.ul`
   display: flex;
+  flex-direction: ${(props) => props.flexDirection};
   flex-wrap: no-wrap;
   list-style-type: none;
+  justify-content: flex-end;
   margin: 0;
   padding: 0;
+
+
+
 `;
 
 export const ListItem = styled.li`
@@ -42,20 +46,21 @@ export const ListItem = styled.li`
 export const Logo = styled.div`
   font-size: 24px;
   font-weight: bold;
+  margin-left: 24px;
   color: var(--white-color);
   margin-right: var(--spacing-lg);
 `;
 
 export const NavLink = styled(Link)`
-  font-size: 16px;
   font-weight: 500;
   color: var(--white-color);
   text-decoration: none;
   transition: color 0.3s, background-color 0.3s;
 
   &:hover {
-    color: var(--primary-color);
-    background-color: var(--white-color);
+    color: var(--warning-color);
+    // background-color: var(--white-color);
+    text-decoration: none;
   }
 `;
 
@@ -63,6 +68,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
+
 `;
 
 export const Button = styled.button`
@@ -95,8 +101,44 @@ export const Button = styled.button`
 `;
 export const LogRegContainer = styled.ul`
   list-style-type: none;
-  flex-grow: 1;
   text-align: right;
   justify-content: flex-end;
   display: inline-flex;
+`;
+
+export const MobileMenu = styled.a`
+  font-size: 24px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  color: var(--white-color);
+
+  @keyframes myAnim {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  &:hover {
+    animation: myAnim 0.5s ease 0s 1 normal forwards;
+    color: var(--warning-color);
+  }
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+export const LogoContainer = styled.div`
+  display: flex;
+  justfy-content: center;
+  align-items: center;
+`;
+export const BrandName = styled.p`
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--white-color);
 `;

@@ -152,7 +152,12 @@ const QuestionDetails = () => {
     setIsModalOpen(false);
   };
   if (!question) {
-    return <p>Loading...</p>;
+    return (
+      <QuestionDetailsWrapper>
+        {' '}
+        <h3>Loading...</h3>{' '}
+      </QuestionDetailsWrapper>
+    );
   }
   if (!user) {
     return (

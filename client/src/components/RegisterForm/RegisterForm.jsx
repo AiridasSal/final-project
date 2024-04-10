@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { SubmitButton } from '../Button/Button.Styled';
+import { SubmitButton } from '../LoginForm/LoginForm.styled';
 
 import { FormGroup, Label, Input } from '../LoginForm/LoginForm.styled';
 import { RegisterFormWrapper } from './RegisterForm.styled';

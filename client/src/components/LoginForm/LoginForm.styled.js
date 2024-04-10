@@ -1,5 +1,36 @@
 import styled from 'styled-components';
 
+export const Button = styled.button`
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: 16px;
+  font-weight: 500;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  margin-top: auto;
+  align-self: flex-end;
+
+  &:hover,
+  &:focus {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    background-color: var(--gray-light);
+    color: var(--gray-dark);
+    cursor: not-allowed;
+  }
+`;
+
 export const LoginFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,5 +64,16 @@ export const Input = styled.input`
   &:focus {
     outline: none;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+`;
+export const SubmitButton = styled(Button)`
+  background-color: var(--secondary-color);
+  &:hover {
+    background-color: var(--primary-color);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;

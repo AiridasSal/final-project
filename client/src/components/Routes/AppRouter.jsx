@@ -6,7 +6,6 @@ import LoginForm from '../LoginForm/LoginForm';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import Header from '../Header/Header';
 import { MainContentContainer } from '../../MainContentContainer.style';
-
 // const PageTitle = () => {
 //   const location = useLocation();
 //   const path = location.pathname;
@@ -28,6 +27,7 @@ import { MainContentContainer } from '../../MainContentContainer.style';
 
 const AppRouter = () => (
   <Router>
+    {/* <Navbar/> */}
     <Header />
     <MainContentContainer>
       {/* <PageTitle /> */}

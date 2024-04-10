@@ -37,7 +37,8 @@ const QuestionForm = ({ onSubmit }) => {
   if (!user) {
     return (
       <QuestionFormWrapper>
-        <h1>Please sign in to ask a question</h1>
+        <Container> <h1>Please login to ask a question</h1></Container>
+
       </QuestionFormWrapper>
     );
   }
@@ -84,7 +85,7 @@ QuestionForm.propTypes = {
 };
 
 QuestionForm.defaultProps = {
-  onSubmit: () => {},
+  onSubmit: () => { },
 };
 
 export default QuestionForm;
