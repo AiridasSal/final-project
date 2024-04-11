@@ -112,7 +112,10 @@ app.delete('/:id', authenticateToken, async (req, res) => {
   await Question.findByIdAndDelete(req.params.id)
   res.sendStatus(204)
 })
-
+app.get('/answers', async(req, res) =>{
+  const answers = await Answer.find()
+  res.send(answers)
+})
 app.get('/:id/answers', async (req, res) => {
   const answers = await Answer.find({ question: req.params.id })
   res.send(answers)

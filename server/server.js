@@ -27,7 +27,7 @@ db.once('open', () => console.log('Connected to MongoDB'))
 // Routes
 app.use('/auth', require('./src/routes/auth'))
 app.use('/questions', require('./src/routes/questions'))
-app.use('/answers', require('./src/routes/questions'))
+app.use('/answers', require('./src/routes/answers'))
 
 function logRoutes(app) {
   app._router.stack.forEach((middleware) => {

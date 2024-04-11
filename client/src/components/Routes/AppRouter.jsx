@@ -5,6 +5,7 @@ import QuestionDetails from '../QuestionDetails/QuestionDetails.lazy';
 import LoginForm from '../LoginForm/LoginForm';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import Header from '../Header/Header';
+import UserProfile from '../UserProfile/UserProfile';
 import { MainContentContainer } from '../../MainContentContainer.style';
 // const PageTitle = () => {
 //   const location = useLocation();
@@ -27,15 +28,14 @@ import { MainContentContainer } from '../../MainContentContainer.style';
 
 const AppRouter = () => (
   <Router>
-    {/* <Navbar/> */}
     <Header />
     <MainContentContainer>
-      {/* <PageTitle /> */}
       <Routes>
         <Route path="/questions/new" element={<QuestionForm />} />
         <Route path="/questions/:id" element={<QuestionDetails />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/" element={<Home showHeroSectionComponent={true} />} />
       </Routes>
     </MainContentContainer>

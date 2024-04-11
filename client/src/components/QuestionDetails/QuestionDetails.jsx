@@ -3,7 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import fetchData from '../fetchdata';
 import { useUser } from '../UserContext';
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import {
   BackButton,
   SubmitButton,
@@ -234,10 +235,10 @@ const QuestionDetails = () => {
               <Stat>Dislikes: {answer.dislikesCount}</Stat>
               {answer.updated && <UpdatedBadge>Updated</UpdatedBadge>}
               <ReactionButton onClick={() => handleLike(answer._id)}>
-                Like
+              <FontAwesomeIcon icon={faThumbsUp}/>
               </ReactionButton>
               <ReactionButton onClick={() => handleDislike(answer._id)}>
-                Dislike
+              <FontAwesomeIcon icon={faThumbsDown} />
               </ReactionButton>
             </AnswerStats>
             <Container>
